@@ -1,0 +1,16 @@
+{% extends "store/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+{% for product in products %}
+    <div class="product">
+        <h2>{{ product.name }}</h2>
+        <p><strong>${{ product.price }}</strong></p>
+        <p>{{ product.description }}</p>
+    </div>
+{% empty %}
+    <p>No products available.</p>
+{% endfor %}
+{% endblock %}
