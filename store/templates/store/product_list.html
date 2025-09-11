@@ -1,16 +1,18 @@
+
 {% extends "store/base.html" %}
-
 {% block title %}Products{% endblock %}
-
 {% block content %}
 <h1>Products</h1>
-{% for product in products %}
+<div class="products">
+    {% for product in products %}
     <div class="product">
-        <h2>{{ product.name }}</h2>
+        <h3>{{ product.name }}</h3>
         <p><strong>${{ product.price }}</strong></p>
         <p>{{ product.description }}</p>
+        <a href="#" class="btn-primary">Add to Cart</a>
     </div>
-{% empty %}
+    {% empty %}
     <p>No products available.</p>
-{% endfor %}
+    {% endfor %}
+</div>
 {% endblock %}

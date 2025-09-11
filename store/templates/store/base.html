@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Store{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'store/style.css' %}">
 </head>
 <body>
-    <!-- Navbar -->
     <header>
         <div class="navbar">
             <div class="logo">
@@ -20,15 +22,13 @@
             </nav>
         </div>
     </header>
-
-    <!-- Main Content -->
-    <div class="container">
+    <main class="container">
         {% block content %}{% endblock %}
-    </div>
-
-    <!-- Footer -->
+    </main>
     <footer>
-        <p>&copy; 2025 My Store Ipswich Retail. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 My Store Ipswich Retail. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

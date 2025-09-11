@@ -1,6 +1,136 @@
 {% extends "store/base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1>Welcome to My Store Ipswich Retail</h1>
-<p>We sell high-quality products at affordable prices.</p>
-{% endblock %}
+
+<section class="hero" style="position: relative; height: 420px; display: flex; align-items: center; justify-content: center; background: linear-gradient(120deg, #f5f7fa 60%, #c3e0f7 100%);">
+	<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Hero" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.7) blur(2px);">
+	<div style="position: relative; z-index: 2; text-align: center; color: #222;">
+		<h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px;">Discover Your Next Purchase</h1>
+		<p style="font-size: 1.3rem; margin-bottom: 2rem; color: #444;">Shop trending products, exclusive deals, and fast delivery.</p>
+		<a href="{% url 'products' %}" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.2rem; background: #2563eb; color: #fff; border-radius: 2rem; box-shadow: 0 2px 8px rgba(37,99,235,0.12); font-weight: 600; text-decoration: none;">Shop Now</a>
+	</div>
+</section>
+
+<section class="categories" style="padding: 2rem 0; text-align: center;">
+	<h2 style="font-size: 2rem; margin-bottom: 2rem; color: #2563eb; font-weight: 700;">Shop by Category</h2>
+	<div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+		<div style="background: #f3f4f6; border-radius: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.08); padding: 1.5rem; width: 180px; transition: box-shadow 0.2s;">
+			<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Electronics" style="width: 100%; border-radius: 0.5rem; margin-bottom: 1rem;">
+			<p style="font-weight: 600; color: #2563eb;">Electronics</p>
+		</div>
+		<div style="background: #f3f4f6; border-radius: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.08); padding: 1.5rem; width: 180px; transition: box-shadow 0.2s;">
+			<img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Fashion" style="width: 100%; border-radius: 0.5rem; margin-bottom: 1rem;">
+			<p style="font-weight: 600; color: #2563eb;">Fashion</p>
+		</div>
+		<div style="background: #f3f4f6; border-radius: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.08); padding: 1.5rem; width: 180px; transition: box-shadow 0.2s;">
+			<img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Home" style="width: 100%; border-radius: 0.5rem; margin-bottom: 1rem;">
+			<p style="font-weight: 600; color: #2563eb;">Home</p>
+		</div>
+		<div style="background: #f3f4f6; border-radius: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.08); padding: 1.5rem; width: 180px; transition: box-shadow 0.2s;">
+			<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Sports" style="width: 100%; border-radius: 0.5rem; margin-bottom: 1rem;">
+			<p style="font-weight: 600; color: #2563eb;">Sports</p>
+		</div>
+	</div>
+</section>
+
+<section class="banner" style="margin: 3rem 0; text-align: center;">
+	<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Sale Banner" style="width: 100%; max-width: 900px; border-radius: 1rem; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+</section>
+
+<section class="featured-products" style="padding: 2rem 0;">
+	<h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #2563eb; font-weight: 700;">Featured Products</h2>
+	<div class="products" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem;">
+		{% for product in featured_products %}
+		<div class="product" style="background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(37,99,235,0.10); padding: 1.7rem 1.2rem; text-align: center; transition: box-shadow 0.2s;">
+			<img src="https://images.unsplash.com/photo-1515165562835-cf7747c2b1c7?auto=format&fit=crop&w=400&q=80" alt="Product" style="width: 100%; height: 150px; object-fit: cover; border-radius: 0.7rem; margin-bottom: 1rem;">
+			<h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #222;">{{ product.name }}</h3>
+			<p style="font-size: 1.1rem; color: #2563eb; font-weight: bold; margin-bottom: 0.5rem;">${{ product.price }}</p>
+			<p style="font-size: 0.98rem; color: #555; margin-bottom: 1rem;">{{ product.description|truncatewords:15 }}</p>
+			<a href="#" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 1rem; background: #22c55e; color: #fff; border-radius: 2rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(34,197,94,0.10);">Add to Cart</a>
+		</div>
+		{% empty %}
+		<p style="grid-column: 1/-1; text-align: center;">No featured products available.</p>
+		{% endfor %}
+	</div>
+</section>
+
+<section class="newsletter" style="background: #eef2ff; padding: 2rem 0; text-align: center; margin: 3rem 0;">
+	<h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Get Exclusive Offers</h2>
+	<form style="display: inline-block;">
+		<input type="email" placeholder="Enter your email" style="padding: 0.7rem 1rem; border-radius: 0.5rem 0 0 0.5rem; border: 1px solid #c7d2fe;">
+		<button type="submit" class="btn-primary" style="padding: 0.7rem 1.5rem; border-radius: 0 0.5rem 0.5rem 0;">Subscribe</button>
+	</form>
+</section>
+
+<section class="why-shop" style="background: #f8fafc; padding: 2rem 0; text-align: center; margin: 3rem 0;">
+	<h2 style="font-size: 1.5rem; margin-bottom: 2rem;">Why Shop With Us?</h2>
+	<div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 220px;">
+			<img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=80&q=80" alt="Shipping" style="width: 60px; margin-bottom: 1rem;">
+			<p style="font-weight: bold;">Fast Shipping</p>
+			<p style="font-size: 0.95rem; color: #555;">Get your products delivered quickly and reliably.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 220px;">
+			<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=80&q=80" alt="Returns" style="width: 60px; margin-bottom: 1rem;">
+			<p style="font-weight: bold;">Easy Returns</p>
+			<p style="font-size: 0.95rem; color: #555;">Hassle-free returns within 30 days.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 220px;">
+			<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Support" style="width: 60px; margin-bottom: 1rem;">
+			<p style="font-weight: bold;">24/7 Support</p>
+			<p style="font-size: 0.95rem; color: #555;">We’re here to help you anytime, anywhere.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 220px;">
+			<img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=80&q=80" alt="Secure" style="width: 60px; margin-bottom: 1rem;">
+			<p style="font-weight: bold;">Secure Payments</p>
+			<p style="font-size: 0.95rem; color: #555;">Your transactions are protected and safe.</p>
+		</div>
+	</div>
+</section>
+
+<section class="testimonials" style="padding: 2rem 0; text-align: center;">
+	<h2 style="font-size: 1.5rem; margin-bottom: 2rem;">What Our Customers Say</h2>
+	<div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 320px;">
+			<p style="font-size: 1rem; color: #555;">"Amazing products and super fast delivery! Highly recommend."</p>
+			<p style="font-weight: bold; margin-top: 1rem;">- Sarah J.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 320px;">
+			<p style="font-size: 1rem; color: #555;">"Great prices and excellent customer service. Will shop again!"</p>
+			<p style="font-weight: bold; margin-top: 1rem;">- Mike T.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 320px;">
+			<p style="font-size: 1rem; color: #555;">"The website is easy to use and checkout was a breeze!"</p>
+			<p style="font-weight: bold; margin-top: 1rem;">- Priya S.</p>
+		</div>
+		<div style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 1.5rem; max-width: 320px;">
+			<p style="font-size: 1rem; color: #555;">"Customer support helped me with my order instantly. Impressed!"</p>
+			<p style="font-weight: bold; margin-top: 1rem;">- Alex R.</p>
+		</div>
+	</div>
+</section>
+
+<section class="newsletter" style="background: #eef2ff; padding: 2rem 0; text-align: center; margin: 3rem 0;">
+	<h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Get Exclusive Offers</h2>
+	<form style="display: inline-block;">
+		<input type="email" placeholder="Enter your email" style="padding: 0.7rem 1rem; border-radius: 0.5rem 0 0 0.5rem; border: 1px solid #c7d2fe;">
+		<button type="submit" class="btn-primary" style="padding: 0.7rem 1.5rem; border-radius: 0 0.5rem 0.5rem 0;">Subscribe</button>
+	</form>
+</section>
+
+<footer style="background: #1e293b; color: #fff; padding: 2rem 0; text-align: center; margin-top: 3rem;">
+	<div style="margin-bottom: 1rem;">
+		<a href="#" style="color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 500;">Home</a>
+		<a href="{% url 'products' %}" style="color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 500;">Shop</a>
+		<a href="{% url 'about' %}" style="color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 500;">About</a>
+		<a href="{% url 'contact' %}" style="color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 500;">Contact</a>
+	</div>
+	<div style="margin-bottom: 1rem;">
+		<a href="#" style="color: #fff; margin: 0 0.5rem; font-size: 1.5rem;" title="Facebook"><span>🔵</span></a>
+		<a href="#" style="color: #fff; margin: 0 0.5rem; font-size: 1.5rem;" title="Twitter"><span>🐦</span></a>
+		<a href="#" style="color: #fff; margin: 0 0.5rem; font-size: 1.5rem;" title="Instagram"><span>📸</span></a>
+	</div>
+	<div style="font-size: 0.95rem; color: #cbd5e1;">&copy; 2025 Ipswich Retail. All rights reserved.</div>
+</footer>
+
+{%endblock%}
