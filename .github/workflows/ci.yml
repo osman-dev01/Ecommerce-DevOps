@@ -29,4 +29,4 @@ jobs:
       - name: Run tests inside Docker
         run: |
           docker build -t ecommerce_app .
-          docker run --rm ecommerce_app python manage.py test
+          docker run --rm --entrypoint python ecommerce_app manage.py test
