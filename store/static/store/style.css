@@ -1,13 +1,17 @@
+/* Global Sticky Footer Layout */
 body.sticky-footer {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
 body.sticky-footer main.container {
     flex: 1; /* pushes footer down */
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
+
 body.sticky-footer footer {
     margin-top: auto !important;
     width: 100%;
@@ -18,6 +22,7 @@ body.sticky-footer footer {
     z-index: 10;
 }
 
+/* Reset + Base Styles */
 html, body {
     height: 100%;
     margin: 0;
@@ -26,12 +31,12 @@ html, body {
     color: #333;
 }
 
+/* Header / Navbar */
 header {
     background: #1e293b;
     padding: 15px 40px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -39,7 +44,6 @@ header {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .logo a {
     color: #f8fafc;
     text-decoration: none;
@@ -47,7 +51,6 @@ header {
     font-weight: bold;
     letter-spacing: 2px;
 }
-
 .nav-links a {
     margin-left: 25px;
     color: #f8fafc;
@@ -56,17 +59,16 @@ header {
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
-
 .nav-links a:hover {
     color: #38bdf8;
 }
 
+/* Main Container */
 main.container {
     flex: 1;
     width: 95%;
     max-width: 1200px;
     margin: 40px auto 0 auto;
-    text-align: center;
     display: flex;
     flex-direction: column;
 }
@@ -94,6 +96,7 @@ main.container {
     padding: 14px 32px;
 }
 
+/* Featured Products Section */
 .featured-products {
     margin-top: 40px;
 }
@@ -105,12 +108,12 @@ main.container {
 
 /* Product Grid */
 .products {
+    flex: 1; /* ensures it stretches page height */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
     margin-top: 20px;
 }
-
 .product {
     background: white;
     padding: 24px 18px;
@@ -158,9 +161,9 @@ main.container {
     background: #1d4ed8;
 }
 
-/* Card Layouts */
+/* Contact Page Card */
 .contact-card {
-    flex: 1; /* ensures footer stays at bottom */
+    flex: 1;
     max-width: 500px;
     margin: 40px auto;
     padding: 36px 28px;
@@ -184,13 +187,14 @@ main.container {
     text-decoration: underline;
 }
 
+/* Footer */
 footer {
     background: #1e293b;
     color: #f8fafc;
     text-align: center;
     padding: 24px 0;
     font-size: 1rem;
-    margin-top: auto; /* sticky behavior */
+    margin-top: auto;
     position: relative;
     width: 100%;
 }
