@@ -1,3 +1,22 @@
+body.sticky-footer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body.sticky-footer main.container {
+    flex: 1; /* pushes footer down */
+    display: flex;
+    flex-direction: column;
+}
+body.sticky-footer footer {
+    margin-top: auto !important;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
 
 html, body {
     height: 100%;
@@ -48,6 +67,8 @@ main.container {
     max-width: 1200px;
     margin: 40px auto 0 auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Hero Section */
@@ -139,13 +160,15 @@ main.container {
 
 /* Card Layouts */
 .contact-card {
+    flex: 1; /* ensures footer stays at bottom */
     max-width: 500px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 36px 28px;
     background: white;
     border-radius: 14px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     text-align: center;
+    min-height: 60vh;
 }
 .contact-card h2 {
     margin-bottom: 20px;
@@ -167,7 +190,9 @@ footer {
     text-align: center;
     padding: 24px 0;
     font-size: 1rem;
-    margin-top: 40px;
+    margin-top: auto; /* sticky behavior */
+    position: relative;
+    width: 100%;
 }
 
 /* Responsive */

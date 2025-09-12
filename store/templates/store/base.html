@@ -8,7 +8,7 @@
     <title>{% block title %}My Store{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'store/style.css' %}">
 </head>
-<body>
+<body class="{% block page_class %}{% endblock %}">
     <header>
         <div class="navbar">
             <div class="logo">
