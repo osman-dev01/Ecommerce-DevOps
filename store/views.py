@@ -2,9 +2,8 @@ from django.shortcuts import render
 from .models import Product
 
 def home(request):
-    # Fetch top 8 products as featured (customize as needed)
-    from .models import Product
-    featured_products = Product.objects.order_by('-stock')[:8]
+    # Fetch top 3 products as featured
+    featured_products = Product.objects.order_by('-stock')[:3]
     return render(request, "store/home.html", {"featured_products": featured_products})
 
 def about(request):
