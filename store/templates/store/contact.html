@@ -12,6 +12,10 @@
 		<textarea name="message" placeholder="Your Message" required style="padding: 0.7rem; border-radius: 0.5rem; border: 1px solid #cbd5e1; min-height: 100px;"></textarea>
 		<button type="submit" class="btn-primary" style="padding: 0.7rem 1.5rem; border-radius: 0.5rem;">Send Message</button>
 	</form>
+	{% if success %}
+		<p style="color: green; margin-top: 1rem; font-weight: bold;">Thank you for contacting us! Your message has been received.</p>
+	{% endif %}
+	</form>
 	<p style="margin-top:2rem;">Or reach us at <a href="mailto:support@mystore.com">support@mystore.com</a> or <a href="tel:+1234567890">+123 456 7890</a></p>
 </div>
 {% endblock %}

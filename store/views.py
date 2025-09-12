@@ -10,7 +10,16 @@ def about(request):
     return render(request, "store/about.html")
 
 def contact(request):
-    return render(request, "store/contact.html")
+    from .models import ContactMessage
+    success = False
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+        if name and email and message:
+            ContactMessage.objects.create(name=name, email=email, message=message)
+            success = True
+    return render(request, "store/contact.html", {"success": success})
 
 def product_list(request):
     products = Product.objects.all()
